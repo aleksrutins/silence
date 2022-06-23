@@ -1,13 +1,13 @@
 use druid::{Data, Lens};
 
 #[derive(Clone, Data)]
-pub struct Timeline {
+pub struct Transport {
     /// Current time, in milliseconds.
     current_time: u64,
     playing: bool,
 }
 
-impl Timeline {
+impl Transport {
     pub fn new() -> Self {
         Self {
             current_time: 0,

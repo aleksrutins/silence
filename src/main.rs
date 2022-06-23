@@ -3,16 +3,16 @@ use druid::{
     AppLauncher, Env, PlatformError, Widget, WidgetExt, WindowDesc,
 };
 use global_state::GlobalState;
-use timeline_display::timeline_hud;
+use transport_display::transport_hud;
 
 mod global_state;
 mod header;
-mod timeline;
-mod timeline_display;
+mod transport;
+mod transport_display;
 
 fn build_ui() -> impl Widget<GlobalState> {
     Flex::column()
-        .with_child(Align::centered(timeline_hud().lens(GlobalState::timeline)))
+        .with_child(Align::centered(transport_hud().lens(GlobalState::transport)))
         .padding(10.)
 }
 

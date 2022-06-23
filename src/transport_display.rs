@@ -4,37 +4,37 @@ use druid::{
     Color, Env, RenderContext, Size, Widget, WidgetExt,
 };
 
-use crate::timeline::Timeline;
+use crate::transport::Transport;
 
-fn control_buttons() -> impl Widget<Timeline> {
+fn control_buttons() -> impl Widget<Transport> {
     Flex::row()
         .with_child(
-            Button::new("▶").on_click(|_ctx, timeline: &mut Timeline, _env| {
-                timeline.play();
+            Button::new("▶").on_click(|_ctx, transport: &mut Transport, _env| {
+                transport.play();
             }),
         )
         .with_default_spacer()
         .with_child(
-            Button::new("⏸︎").on_click(|_ctx, timeline: &mut Timeline, _env| {
-                timeline.pause();
+            Button::new("⏸︎").on_click(|_ctx, transport: &mut Transport, _env| {
+                transport.pause();
             }),
         )
         .with_default_spacer()
         .with_child(
-            Button::new("⏹︎").on_click(|_ctx, timeline: &mut Timeline, _env| {
-                timeline.stop();
+            Button::new("⏹︎").on_click(|_ctx, transport: &mut Transport, _env| {
+                transport.stop();
             }),
         )
         .padding(5.)
 }
 
-pub fn timeline_hud() -> impl Widget<Timeline> {
+pub fn transport_hud() -> impl Widget<Transport> {
     Flex::column()
         .with_child(
-            Label::new(|data: &Timeline, _env: &Env| data.current_time().to_string())
+            Label::new(|data: &Transport, _env: &Env| data.current_time().to_string())
                 .with_text_size(20.),
         )
-        .with_child(Label::new(|data: &Timeline, _env: &Env| {
+        .with_child(Label::new(|data: &Transport, _env: &Env| {
             if data.is_playing() {
                 "Playing"
             } else {

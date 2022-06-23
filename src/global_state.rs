@@ -1,6 +1,6 @@
 use druid::{Data, Lens};
 
-use crate::timeline::Timeline;
+use crate::transport::Transport;
 
 #[derive(Clone, Data)]
 pub struct Project {
@@ -10,14 +10,14 @@ pub struct Project {
 #[derive(Clone, Data, Lens)]
 pub struct GlobalState {
     pub project: Option<Project>,
-    pub timeline: Timeline,
+    pub transport: Transport,
 }
 
 impl Default for GlobalState {
     fn default() -> Self {
         Self {
             project: None,
-            timeline: Timeline::new(),
+            transport: Transport::new(),
         }
     }
 }
