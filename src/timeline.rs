@@ -1,3 +1,6 @@
+use druid::Data;
+
+#[derive(Clone, Data)]
 pub struct Timeline {
     /// Current time, in milliseconds.
     current_time: u64,
