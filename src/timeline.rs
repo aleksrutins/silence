@@ -1,4 +1,4 @@
-use druid::Data;
+use druid::{Data, Lens};
 
 #[derive(Clone, Data)]
 pub struct Timeline {
@@ -9,7 +9,10 @@ pub struct Timeline {
 
 impl Timeline {
     pub fn new() -> Self {
-        Self { current_time: 0, playing: false }
+        Self {
+            current_time: 0,
+            playing: false,
+        }
     }
 
     pub fn play(&mut self) {
